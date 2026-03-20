@@ -25,19 +25,19 @@ import lombok.RequiredArgsConstructor;
 public class MemberServiceImpl implements MemberService{
 	private final MemberRepository memberRepository;
 	private final BCryptPasswordEncoder passwordEncoder;
-
+	
 	@Override
 	public void register(ReqRegisterDTO request) {
 		// 1. 비밀번호 & 비밀번호 확인 검증
 		if(!request.getPassword().equals(request.getPasswordCheck())) {
 			throw new MemberException("회원가입에 실패했습니다.", "실패", HttpStatus.BAD_REQUEST);
 		}
-
+		
 //		2. 아이디 중복 체크
 		if (memberRepository.existsByUserId(request.getUserId())) {
 			System.out.println("이미 사용중인 아이디 입니다.");
 		}
-
+		
 //		3. 이메일 중복 체크
 		if(memberRepository.existsByemail(request.getEmail())) {
 			System.out.println("이미 존재하는 이메일 입니다.");
@@ -52,7 +52,7 @@ public class MemberServiceImpl implements MemberService{
 		member.setUserName(request.getUserName());
 		member.setEmail(request.getEmail());
 		member.setPassword(encodedPassword);
-
+		
 //		6. DB 저장
 		memberRepository.save(member);
 	}

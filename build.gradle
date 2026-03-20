@@ -17,6 +17,9 @@ java {
 repositories {
 	mavenCentral()
 }
+springBoot {
+    mainClass = 'kr.co.restStudy.RestStudyApplication'
+}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
