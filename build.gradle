@@ -18,7 +18,7 @@ repositories {
 	mavenCentral()
 }
 springBoot {
-    mainClass = 'kr.co.restStudy.RestStudyApplication'
+    mainClass = 'kr.co.restStudy.RestStudyCicdApplication'
 }
 
 dependencies {
